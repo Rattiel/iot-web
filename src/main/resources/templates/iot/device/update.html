@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<head th:replace="/fragment :: head">
+    <title>GREPLFA</title>
+</head>
+<body>
+<header th:replace="/fragment :: header"></header>
+<main class="d-flex flex-column justify-content-center w-100 container-lg mt-1">
+    <div class="d-flex justify-content-between w-100 mt-1 mb-3">
+        <h2>장치 수정</h2>
+    </div>
+    <form id="delete-form" th:action="@{/iot/device/{deviceId}/delete(deviceId=${deviceId})}" method="post"></form>
+    <form class="mx-auto col col-lg-5 mb-3" th:action="@{/iot/device/{deviceId}/update(deviceId=${deviceId})}" th:object="${form}" method="post">
+        <div class="mb-3">
+            <label for="name-input">이름</label>
+            <input class="form-control" type="text" id="name-input" th:field="*{name}">
+            <div class="invalid-feedback d-block">
+                <th:block th:if="${#fields.hasErrors('name')}" th:errors="*{name}">이름 오류</th:block>
+            </div>
+        </div>
+        <div>
+            <label for="part-list">파츠 목록</label>
+            <div id="part-list" class="mb-3 border border-secondary rounded p-3" th:each="part, stat : *{parts}">
+                <input type="hidden" th:field="*{parts[__${stat.index}__].id}">
+                <div class="mb-1">
+                    <input type="hidden" id="part-id-input" th:id="|label-id-| + ${stat.index}" th:field="*{parts[__${stat.index}__].id}">
+                    <label th:for="|label-input-| + ${stat.index}" for="part-label-input">명칭</label>
+                    <input class="form-control" type="text" id="part-label-input" th:id="|label-input-| + ${stat.index}" th:field="*{parts[__${stat.index}__].label}">
+                    <div class="invalid-feedback d-block">
+                        <th:block th:if="${#fields.hasErrors('parts[' + stat.index + '].label')}" th:errors="*{parts[__${stat.index}__].label}">파츠 명칭 오류</th:block>
+                        <th:block th:if="${#fields.hasErrors('parts[' + stat.index + '].id')}" th:errors="*{parts[__${stat.index}__].id}">파츠 아이디 오류</th:block>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+            <input class="btn btn-primary mx-1" type="submit" value="저장">
+            <a class="btn btn-secondary mx-1" th:href="@{/iot/device}" href="#">취소</a>
+            <input class="btn btn-danger mx-1" type="button" value="삭제" onclick="del()">
+        </div>
+    </form>
+</main>
+<footer th:replace="/fragment :: footer"></footer>
+<script>
+    function del() {
+        document.getElementById("delete-form").submit();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+  servlet:
+    encoding:
+      force-response: true
+  port: 8080
+
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+      enabled: false
+      path: /h2-console
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://115.31.121.170:3306/web
+    username: web
+    password: Whddlf0504
+
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: off
+
+logging:
+ level:
+   org.hibernate.SQL: error

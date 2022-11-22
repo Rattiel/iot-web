@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<head th:replace="/fragment :: head">
+    <title>GREPLFA</title>
+</head>
+<body>
+<header th:replace="/fragment :: header"></header>
+<main class="d-flex flex-column justify-content-center w-100 container-lg mt-1">
+    <form class="mx-auto col col-lg-5 mt-1 mb-3" th:action="@{/iot/widget/device/new/create}" th:object="${form}" method="post">
+        <div class="mb-3">
+            <label for="device-option-input">장치</label>
+            <select class="form-control" id="device-option-input" th:field="*{deviceId}">
+                <option th:each="deviceOption : *{deviceOptions}" th:value="${deviceOption.id}" th:text="${deviceOption.name}">장치 이름</option>
+            </select>
+            <div class="invalid-feedback d-block">
+                <th:block th:if="${#fields.hasErrors('deviceId')}" th:errors="*{deviceId}">장치 오류</th:block>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <input class="btn btn-primary mx-1" type="submit" value="저장">
+            <a class="btn btn-secondary mx-1" th:href="@{/}" href="#">취소</a>
+        </div>
+    </form>
+</main>
+<footer th:replace="/fragment :: footer"></footer>
+</body>
+</html>
