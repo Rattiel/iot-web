@@ -5,7 +5,7 @@ function Button({widget, part}) {
     const dispatch = useContext(WidgetDispatch);
 
     const onAction = (e) => {
-        dispatch({ type: "ACTION_PART", widget: widget, part: part, option: e.target.checked ? 0 : 1 });
+        dispatch({ type: "ACTION_PART", widget: widget, part: part, option: e.target.checked ? 1 : 0 });
         // dispatch({ type: 'UPDATE_PART', widget: widget, device: device, part : { ...part, status:  e.target.checked ? 1 : 0 } });
     }
 
