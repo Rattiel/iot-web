@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**", "/js/**", "/library/**")
+        registry.addResourceHandler("**/*.*")
                 .addResourceLocations("classpath:/static/")
-                .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS));
+                .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS));
     }
 }
