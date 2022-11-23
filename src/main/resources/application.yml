@@ -49,6 +49,12 @@ spring:
     host: 172.17.0.1
     port: 6379
 
+  web:
+    resources:
+      cache:
+        period: 60
+
 logging:
  level:
    org.hibernate.SQL: error
+
