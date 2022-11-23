@@ -6,6 +6,9 @@
 <body>
 <header th:replace="fragment :: header"></header>
 <main class="d-flex flex-column justify-content-center w-100 container-lg mt-1">
+    <div class="d-flex justify-content-between w-100 mt-1 mb-3">
+        <h2>파츠 위젯 등록</h2>
+    </div>
     <form class="mx-auto col col-lg-5 mt-1 mb-3" th:action="@{/iot/widget/part/new/create}" th:object="${form}" method="post">
         <div class="mb-3">
             <label for="device-option-input">파츠</label>

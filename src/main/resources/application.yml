@@ -24,7 +24,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/web
+    url: jdbc:mariadb://172.17.0.1:3306/web
     username: web
     password: Whddlf0504
 
