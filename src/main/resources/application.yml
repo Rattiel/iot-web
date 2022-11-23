@@ -6,6 +6,7 @@ server:
   servlet:
     encoding:
       force-response: true
+
   port: 8080
 
 spring:
@@ -23,7 +24,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://192.168.1.118:3306/web
+    url: jdbc:mariadb://127.0.0.1:3306/web
     username: web
     password: Whddlf0504
 
