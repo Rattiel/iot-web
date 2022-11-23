@@ -3,6 +3,7 @@ package com.greplfa.web.domain.iot.part.service;
 import com.greplfa.iot.sdk.device.part.PartMethod;
 import com.greplfa.web.domain.iot.part.Part;
 import com.greplfa.web.domain.iot.part.exception.PartNotFoundException;
+import com.greplfa.web.domain.iot.part.helper.PartMessageSender;
 import com.greplfa.web.domain.iot.part.repository.PartRepository;
 import com.greplfa.web.domain.member.Member;
 import com.greplfa.web.domain.member.dto.MemberDetails;
@@ -15,6 +16,8 @@ import javax.transaction.Transactional;
 @Service
 public class DefaultPartService implements PartService {
     private final PartRepository partRepository;
+
+    private final PartMessageSender partMessageSender;
 
     @Transactional
     @Override
@@ -29,6 +32,10 @@ public class DefaultPartService implements PartService {
                 .build();
 
         partMethod.action(option, memberDetails.getId());
+
+        //TODO 임시 테스트 코드
+        part.feedback(option);
+        partMessageSender.update(part.getDevice().getId(), part, memberDetails);
     }
 
     private Part findPart(long id, Member owner) {

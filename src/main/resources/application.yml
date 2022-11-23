@@ -7,7 +7,7 @@ server:
     encoding:
       force-response: true
 
-  port: 8080
+  port: 8081
 
 spring:
   session:
@@ -47,6 +47,7 @@ spring:
 
   redis:
     host: 172.17.0.1
+    port: 6379
 
 logging:
  level:

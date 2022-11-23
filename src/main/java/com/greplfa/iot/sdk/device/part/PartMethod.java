@@ -1,9 +1,12 @@
 package com.greplfa.iot.sdk.device.part;
 
+import com.greplfa.web.domain.iot.part.repository.PartRepository;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -27,13 +30,10 @@ public class PartMethod {
 
         log.info("명령 수행(파츠 라벨 : " + label + ", option : " + option + ")");
 
-        /*
         ResponseEntity<?> response = rt.postForEntity(
                 "http://iot.grepfa.com:8765/set", //{요청할 서버 주소}
                 entity, // {요청할 때 보낼 데이터},
                 Void.class
         );
-
-         */
     }
 }
