@@ -35,5 +35,7 @@ public class PartMethod {
                 entity, // {요청할 때 보낼 데이터},
                 Void.class
         );
+
+        log.info("iot 서버 응답 : " + response.getStatusCode());
     }
 }
