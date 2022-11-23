@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="kr">
-<head th:replace="/fragment :: head">
+<head th:replace="fragment :: head">
     <title>GREPLFA</title>
 </head>
 <body>
-<header th:replace="/fragment :: header"></header>
+<header th:replace="fragment :: header"></header>
 <main class="d-flex flex-column justify-content-center w-100 container mt-1">
     <div class="d-flex justify-content-between w-100 mt-1 mb-3">
         <h2>장치 등록</h2>
@@ -23,6 +23,6 @@
         </div>
     </form>
 </main>
-<footer th:replace="/fragment :: footer"></footer>
+<footer th:replace="fragment :: footer"></footer>
 </body>
 </html>

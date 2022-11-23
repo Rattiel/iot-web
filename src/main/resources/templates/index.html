@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="kr">
 <head>
-    <th:block th:include="/fragment :: head"></th:block>
+    <th:block th:include="fragment :: head"></th:block>
     <title>GREPLFA</title>
 </head>
 <body>
-<header th:replace="/fragment :: header"></header>
+<header th:replace="fragment :: header"></header>
 <main class="d-flex flex-column justify-content-center w-100 container mt-1">
     <div class="d-flex flex-row-reverse justify-content-between align-items-center w-100 mt-1 mb-3">
         <div class="d-flex flex-row">
@@ -16,7 +16,7 @@
     </div>
     <div id="root"></div>
 </main>
-<footer th:replace="/fragment :: footer"></footer>
+<footer th:replace="fragment :: footer"></footer>
 <script src="/js/bundle.js"></script>
 </body>
 </html>

@@ -9,20 +9,21 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: init
+
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+
   jackson:
     serialization:
       fail-on-empty-beans: false
 
-  h2:
-    console:
-      settings:
-        web-allow-others: true
-      enabled: false
-      path: /h2-console
-
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://115.31.121.170:3306/web
+    url: jdbc:mariadb://192.168.1.118:3306/web
     username: web
     password: Whddlf0504
 
@@ -34,7 +35,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true

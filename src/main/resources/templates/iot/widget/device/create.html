@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="kr">
-<head th:replace="/fragment :: head">
+<head th:replace="fragment :: head">
     <title>GREPLFA</title>
 </head>
 <body>
-<header th:replace="/fragment :: header"></header>
+<header th:replace="fragment :: header"></header>
 <main class="d-flex flex-column justify-content-center w-100 container-lg mt-1">
     <form class="mx-auto col col-lg-5 mt-1 mb-3" th:action="@{/iot/widget/device/new/create}" th:object="${form}" method="post">
         <div class="mb-3">
@@ -22,6 +22,6 @@
         </div>
     </form>
 </main>
-<footer th:replace="/fragment :: footer"></footer>
+<footer th:replace="fragment :: footer"></footer>
 </body>
 </html>

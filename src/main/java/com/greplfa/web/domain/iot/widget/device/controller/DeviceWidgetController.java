@@ -38,7 +38,7 @@ public class DeviceWidgetController {
     ) {
         bindCreateForm(memberDetails, model);
 
-        return "/iot/widget/device/create";
+        return "iot/widget/device/create";
     }
 
     @PostMapping("/new/create")
@@ -49,7 +49,7 @@ public class DeviceWidgetController {
     ) {
         if (bindingResult.hasErrors()) {
             bindCreateForm(form, memberDetails);
-            return "/iot/widget/device/create";
+            return "iot/widget/device/create";
         }
 
         try {
@@ -57,7 +57,7 @@ public class DeviceWidgetController {
         } catch (DeviceNotFoundException | DeviceUnavailableException | WidgetExistedException e) {
             bindCreateForm(form, memberDetails);
             bindFieldError(bindingResult, e);
-            return "/iot/widget/device/create";
+            return "iot/widget/device/create";
         }
 
         return "redirect:/";

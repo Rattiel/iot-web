@@ -38,7 +38,7 @@ public class HistoryWidgetController {
     ) {
         bindCreateForm(memberDetails, model);
 
-        return "/iot/widget/history/create";
+        return "iot/widget/history/create";
     }
 
     @PostMapping("/new/create")
@@ -50,7 +50,7 @@ public class HistoryWidgetController {
         if (bindingResult.hasErrors()) {
             bindCreateForm(form, memberDetails);
 
-            return "/iot/widget/history/create";
+            return "iot/widget/history/create";
         }
 
         try {
@@ -58,7 +58,7 @@ public class HistoryWidgetController {
         } catch (DeviceNotFoundException | DeviceUnavailableException | WidgetExistedException e) {
             bindCreateForm(form, memberDetails);
             bindFieldError(bindingResult, e);
-            return "/iot/widget/history/create";
+            return "iot/widget/history/create";
         }
 
         return "redirect:/";

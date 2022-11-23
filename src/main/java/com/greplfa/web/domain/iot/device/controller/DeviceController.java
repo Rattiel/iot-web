@@ -38,7 +38,7 @@ public class DeviceController {
     ) {
         bindDeviceInfoList(model, memberDetails);
 
-        return "/iot/device/list";
+        return "iot/device/list";
     }
 
     @GetMapping("/new/create")
@@ -47,7 +47,7 @@ public class DeviceController {
     ) {
         bindCreateForm(model);
 
-        return "/iot/device/create";
+        return "iot/device/create";
     }
 
     @PostMapping("/new/create")
@@ -57,14 +57,14 @@ public class DeviceController {
             @AuthenticationPrincipal MemberDetails memberDetails
     ) {
         if (bindingResult.hasErrors()) {
-            return "/iot/device/create";
+            return "iot/device/create";
         }
 
         try {
             deviceService.create(form.getUuid(), memberDetails);
         } catch (DeviceUnavailableException e) {
             bindFieldError(bindingResult, e);
-            return "/iot/device/create";
+            return "iot/device/create";
         }
 
         return "redirect:/iot/device";
@@ -78,7 +78,7 @@ public class DeviceController {
     ) {
         bindUpdateForm(deviceId, memberDetails, model);
 
-        return "/iot/device/update";
+        return "iot/device/update";
     }
 
     @PostMapping("/{deviceId}/update")
@@ -89,7 +89,7 @@ public class DeviceController {
             @AuthenticationPrincipal MemberDetails memberDetails
     ) {
         if (bindingResult.hasErrors()) {
-            return "/iot/device/update";
+            return "iot/device/update";
         }
 
         try {
@@ -101,7 +101,7 @@ public class DeviceController {
             deviceService.update(deviceId, form.getName(), partUpdateParameterList, memberDetails);
         } catch (DeviceUnavailableException e) {
             bindFieldError(bindingResult, e);
-            return "/iot/device/update";
+            return "iot/device/update";
         }
 
         return "redirect:/iot/device";
