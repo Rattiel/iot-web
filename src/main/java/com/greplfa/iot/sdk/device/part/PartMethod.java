@@ -30,12 +30,16 @@ public class PartMethod {
 
         log.info("명령 수행(파츠 라벨 : " + label + ", option : " + option + ")");
 
-        ResponseEntity<?> response = rt.postForEntity(
-                "http://iot.grepfa.com:8765/set", //{요청할 서버 주소}
-                entity, // {요청할 때 보낼 데이터},
-                Void.class
-        );
+        try {
+            ResponseEntity<?> response = rt.postForEntity(
+                    "http://iot.grepfa.com:8765/set", //{요청할 서버 주소}
+                    entity, // {요청할 때 보낼 데이터},
+                    Void.class
+            );
 
-        log.info("iot 서버 응답 : " + response.getStatusCode());
+            log.info("iot 서버 응답 : " + response.getStatusCode());
+        } catch (Exception e) {
+            log.info("iot 서버 오류");
+        }
     }
 }
