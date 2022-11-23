@@ -20,9 +20,6 @@ public class DeviceMethod {
     private final static String SLIDER_UUID = "as2sfg3d-c7c5-4603-841c-ce31d1919ae3";
     private final DeviceInfo deviceInfo;
 
-    //TODO : 테스트 코드 -> 테스트 디바이스 등록 여부
-    private boolean check = false;
-
     public DeviceMethod() {
         DeviceContent content = DeviceContent.builder()
                 .deviceId(DEVICE_UUID)
@@ -83,10 +80,6 @@ public class DeviceMethod {
     }
 
     public DeviceInfo register(String deviceUuid, String userId) {
-        if (check) {
-            throw new DeviceAlreadyRegisteredException("테스트 장비 이미 등록 됌.");
-        }
-
         //TODO : iot 서버 미구현(추후 사용)
         /*
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -103,14 +96,10 @@ public class DeviceMethod {
         );
          */
 
-        check = true;
         return deviceInfo;
     }
 
     public void delete(String uuid, UserDetails userDetails) {
-        if (!check) {
-            throw new DeviceNotRegisteredException("테스트 장비 등록 안됌.");
-        }
         // ignore;
     }
 }

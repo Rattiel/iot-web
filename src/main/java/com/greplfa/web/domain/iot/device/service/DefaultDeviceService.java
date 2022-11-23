@@ -27,6 +27,8 @@ public class DefaultDeviceService implements DeviceService {
     private final DeviceMessageSender message;
     private final DeviceMethod deviceMethod;
 
+    private final static String DEVICE_UUID = "bec6f91b-9adc-40c7-98b5-3374195512ce";
+
     @Transactional
     @Override
     public void create(String uuid, MemberDetails memberDetails) {
@@ -95,7 +97,7 @@ public class DefaultDeviceService implements DeviceService {
     }
 
     private void check(String deviceUuid) {
-        if (deviceRepository.existsByUuid(deviceUuid)) {
+        if (deviceRepository.existsByUuid(DEVICE_UUID)) {
             throw new DeviceUnavailableException("장치 검사 실패(이유 : 이미 사용중인 장치)", "이미 사용하고 있는 장치입니다.");
         }
     }
