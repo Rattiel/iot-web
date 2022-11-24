@@ -55,15 +55,6 @@ public class DeviceMethod {
                 .build();
         channels.add(co2Part);
 
-        PartInfo buttonPart = PartInfo.builder()
-                .device(DEVICE_UUID)
-                .channelId(BUTTON_UUID)
-                .channelType("boolean")
-                .channelName("버튼")
-                .channelIsControl(true)
-                .build();
-        channels.add(buttonPart);
-
         PartInfo sliderPart = PartInfo.builder()
                 .device(DEVICE_UUID)
                 .channelId(SLIDER_UUID)
